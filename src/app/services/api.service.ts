@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ApiService {
 
   public get<T>(end: string): Observable<T> {
 
-    return this.httpClient.get<T>(environment.api + end);
+    return this.httpClient.get<{ data: { results: T } }>(environment.api + end).pipe(map(response => response.data.results));
 
   }
 

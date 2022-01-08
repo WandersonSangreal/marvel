@@ -1,0 +1,16 @@
+.input-group {
+  input#search {
+    color: white;
+    border-right: none;
+    background-color: transparent;
+  }
+
+  .search-button {
+    border-left: none;
+
+    &:hover {
+      color: white;
+      background-color: transparent;
+    }
+  }
+}

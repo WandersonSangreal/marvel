@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 mb-4" *ngFor="let item of (list$ | async)">
+      <div class="card">
+        <img [src]="item.thumbnail.path + '/landscape_xlarge.jpg'" class="card-img-top" [alt]="item.name">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.description || 'Sem descrição' }}</p>
+          <a href="#" class="btn btn-outline-secondary">Detalhes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <nav>
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">
+              <i class="fas fa-angle-double-left"></i>
+            </span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">
+              <i class="fas fa-angle-double-right"></i>
+            </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
