@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {SearchComponent} from './main/search/search.component';
 import {DetailedComponent} from './main/detailed/detailed.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {CredentialInterceptor} from "./middlewares/credential.interceptor";
 
 @NgModule({
   declarations: [
@@ -14,9 +16,12 @@ import {DetailedComponent} from './main/detailed/detailed.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: CredentialInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
+  api: 'http://gateway.marvel.com/v1/public/',
   crendential: {
     public: '5a237863b3cc2061003cbbc4fe20dc06',
-    ts: 'fbf255068eccea6d0ef951b9f25626b57ab2fe72',
+    ts: '1641665714440',
     hash: 'e5116ac2dbdaa8d6fb1642631fde2588',
   }
 };

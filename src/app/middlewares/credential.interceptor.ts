@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpRequest, HttpHandler, HttpEvent, HttpInterceptor} from '@angular/common/http';
 import {Observable} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class CredentialInterceptor implements HttpInterceptor {
@@ -10,6 +11,11 @@ export class CredentialInterceptor implements HttpInterceptor {
     request = request.clone({
       setHeaders: {
         'Accept': 'application/json',
+      },
+      setParams: {
+        ts: environment.crendential.ts,
+        apikey: environment.crendential.public,
+        hash: environment.crendential.hash,
       }
     });
 
