@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  crendential: {
+    public: '5a237863b3cc2061003cbbc4fe20dc06',
+    ts: 'fbf255068eccea6d0ef951b9f25626b57ab2fe72',
+    hash: 'e5116ac2dbdaa8d6fb1642631fde2588',
+  }
 };
 
 /*
