@@ -9,12 +9,22 @@ import {Pagination} from '../models/pagination'
 })
 export class ApiService {
 
+  public page: number = 0;
+
   public constructor(private httpClient: HttpClient) {
+
+    this.page = parseInt((localStorage.getItem('page') || '1'), 10);
+
   }
 
   public get<T>(end: string, page?: number): Observable<{ results: T; pagination: Pagination }> {
 
-    const url = !page ? environment.api + end : environment.api + end + '?offset=' + page;
+    if (page) {
+      this.page = page;
+      localStorage.setItem('page', String(page));
+    }
+
+    const url = !this.page ? environment.api + end : environment.api + end + '?offset=' + this.page;
 
     return this.httpClient.get<{ data: { count: number; limit: number; offset: number; total: number; results: T } }>(url)
       .pipe(

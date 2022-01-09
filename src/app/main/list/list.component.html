@@ -13,8 +13,8 @@
           <img [src]="item.thumbnail.path + '/landscape_xlarge.jpg'" class="card-img-top" [alt]="item.name">
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.description || 'Sem descrição' }}</p>
-            <a href="#" class="btn btn-outline-secondary">Detalhes</a>
+            <p class="card-text">{{ item.description || 'Sem descrição disponível' }}</p>
+            <a class="btn btn-outline-secondary" [routerLink]="['/detailed', item.id]">Detalhes</a>
           </div>
         </div>
       </div>

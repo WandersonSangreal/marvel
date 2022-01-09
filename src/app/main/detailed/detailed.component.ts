@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable, of} from "rxjs";
+import {ApiService} from "../../services/api.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-detailed',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailedComponent implements OnInit {
 
-  constructor() { }
+  public details$: Observable<any> = of(null);
 
-  ngOnInit(): void {
+  public constructor(private route: ActivatedRoute, private apiService: ApiService) {
+  }
+
+  public ngOnInit(): void {
+
+    this.details$ = this.apiService.get<any>('characters/' + this.route.snapshot.params['id']);
+
   }
 
 }
