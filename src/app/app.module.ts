@@ -8,6 +8,8 @@ import {DetailedComponent} from './main/detailed/detailed.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CredentialInterceptor} from "./middlewares/credential.interceptor";
 import { ListComponent } from './main/list/list.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {ApiService} from "./services/api.service";
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { ListComponent } from './main/list/list.component';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,
   ],
   providers: [
+    ApiService,
     {provide: HTTP_INTERCEPTORS, useClass: CredentialInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

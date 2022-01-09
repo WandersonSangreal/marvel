@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {Observable, of} from "rxjs";
+import {map, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-list',
@@ -9,6 +9,8 @@ import {Observable, of} from "rxjs";
 })
 export class ListComponent implements OnInit {
 
+  public page = 1;
+  public pagination: any = null;
   public list$: Observable<any> = of([]);
 
   public constructor(private apiService: ApiService) {
@@ -17,6 +19,12 @@ export class ListComponent implements OnInit {
   public ngOnInit(): void {
 
     this.list$ = this.apiService.get<any>('characters');
+
+  }
+
+  public changePage(ev: number, items: number): void {
+
+    this.list$ = this.apiService.get<any>('characters', (((ev * items) + 1) - items));
 
   }
 

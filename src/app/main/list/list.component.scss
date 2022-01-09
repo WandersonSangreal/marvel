@@ -1,6 +1,10 @@
 .card {
   color: white;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.04);
+
+  .card-img-top {
+    height: 225px;
+  }
 
   .card-text {
     height: 196px;
