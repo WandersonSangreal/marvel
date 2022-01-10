@@ -21,4 +21,10 @@ export class DetailedComponent implements OnInit {
 
   }
 
+  public getComicThumb(url: string): Observable<any> {
+
+    return this.apiService.get<any>(url);
+
+  }
+
 }
