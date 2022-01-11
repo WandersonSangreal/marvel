@@ -1,10 +1,10 @@
 <div class="container my-4">
 
-  <div class="row" *ngIf="false">
+  <div class="row">
 
     <div class="col-4 mx-auto">
 
-      <app-search></app-search>
+      <app-search (onSearch)="searchCharacters($event)"></app-search>
 
     </div>
 
@@ -15,7 +15,7 @@
     </div>
   </div>
   <br>
-  <ng-container *ngIf="list$ | async as list">
+  <ng-container *ngIf="list$ | async as list; else elseBlock">
     <div class="row">
       <div class="col-3 mb-4"
            *ngFor="let item of list.results | paginate: {itemsPerPage: list.pagination.items, currentPage: list.pagination.page, totalItems: list.pagination.total}">
@@ -29,7 +29,11 @@
           </div>
         </div>
       </div>
+      <div class="col text-center my-lg-4" *ngIf="list.results.length === 0">
+        Nenhum resultado encontrado.
+      </div>
     </div>
+    <br>
     <div class="row">
       <div class="col text-center">
         <pagination-controls (pageChange)="changePage($event, list.pagination.items)"
@@ -37,4 +41,7 @@
       </div>
     </div>
   </ng-container>
+  <ng-template #elseBlock>
+    <div class="text-center">Carregando...</div>
+  </ng-template>
 </div>

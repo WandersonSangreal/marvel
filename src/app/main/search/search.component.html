@@ -1,11 +1,17 @@
-<div class="">
+<div class="search">
 
-  <div class="input-group mt-3 mb-5">
-    <input type="search" id="search" class="form-control form-control-lg rounded-pill rounded-end border-2" placeholder="Pesquisar"
-           aria-describedby="button-addon">
-    <button class="btn btn-outline-light rounded-pill rounded-start border-2 search-button pe-3" type="button" id="button-addon">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+
+    <div class="input-group mt-3 mb-5">
+      <input formControlName="search" type="search" id="search" (keyup)="verifyClearSearch()"
+             (change)="verifyClearSearch()" class="form-control form-control-lg rounded-pill rounded-end border-2"
+             placeholder="Pesquisar" aria-describedby="button-addon">
+      <button class="btn btn-outline-light rounded-pill rounded-start border-2 search-button pe-3" type="submit"
+              id="button-addon">
       <i class="fas fa-search"></i>
     </button>
   </div>
+
+  </form>
 
 </div>

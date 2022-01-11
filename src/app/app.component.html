@@ -1,21 +1,22 @@
 <div id="main">
-  <div class="container-fluid">
+
+  <div class="brand">
 
     <div class="row">
 
       <div class="col">
 
-        <div class="brand">
-
-          <a [routerLink]="['/']">
-            <img src="/assets/brand/marvel.png" alt="Marvel">
-          </a>
-
-        </div>
+        <a [routerLink]="['/']">
+          <img src="/assets/brand/marvel.png" alt="Marvel">
+        </a>
 
       </div>
 
     </div>
+
+  </div>
+
+  <div class="container-fluid">
 
     <router-outlet></router-outlet>
 

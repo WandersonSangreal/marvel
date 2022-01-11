@@ -10,6 +10,7 @@ import {CredentialInterceptor} from "./middlewares/credential.interceptor";
 import { ListComponent } from './main/list/list.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {ApiService} from "./services/api.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import {ApiService} from "./services/api.service";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxPaginationModule,
     AppRoutingModule,
     HttpClientModule,

@@ -9,8 +9,9 @@
   .brand {
     padding: 1rem 0;
     text-align: center;
+    background-color: white;
 
-    & > a > img {
+    img {
       width: auto;
       height: 60px;
     }

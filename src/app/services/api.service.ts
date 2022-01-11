@@ -9,24 +9,27 @@ import {Pagination} from '../models/pagination'
 })
 export class ApiService {
 
-  public page: number = 0;
-
   public constructor(private httpClient: HttpClient) {
-
-    this.page = parseInt((localStorage.getItem('page') || '1'), 10);
 
   }
 
-  public get<T>(end: string, page?: number): Observable<{ results: T; pagination: Pagination }> {
+  public get<T>(end: string, page?: number, search?: string): Observable<{ results: T; pagination: Pagination }> {
 
     if (page) {
-      this.page = page;
-      localStorage.setItem('page', String(page));
+      sessionStorage.setItem('page', String(page));
     }
 
-    const url = !this.page ? environment.api + end : environment.api + end + '?offset=' + this.page;
+    let url = new URL(environment.api + end);
 
-    return this.httpClient.get<{ data: { count: number; limit: number; offset: number; total: number; results: T } }>(url)
+    if (page) {
+      url.searchParams.append('offset', String(page));
+    }
+
+    if (search) {
+      url.searchParams.append('nameStartsWith', search);
+    }
+
+    return this.httpClient.get<{ data: { count: number; limit: number; offset: number; total: number; results: T } }>(url.toString())
       .pipe(
         share(),
         map(response => {
