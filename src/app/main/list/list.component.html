@@ -1,4 +1,14 @@
 <div class="container">
+
+  <div class="row">
+
+    <div class="col-4 mx-auto">
+
+      <app-search></app-search>
+
+    </div>
+
+  </div>
   <div class="row">
     <div class="col text-center">
       <h2>Personagens</h2>
@@ -10,7 +20,8 @@
       <div class="col-3 mb-4"
            *ngFor="let item of list.results | paginate: {itemsPerPage: list.pagination.items, currentPage: list.pagination.page, totalItems: list.pagination.total}">
         <div class="card">
-          <img [src]="item.thumbnail.path.replace('http', 'https') + '/landscape_xlarge.jpg'" class="card-img-top" [alt]="item.name">
+          <img [src]="item.thumbnail.path.replace('http', 'https') + '/landscape_xlarge.jpg'" class="card-img-top"
+               [alt]="item.name">
           <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <p class="card-text">{{ item.description || 'Sem descrição disponível' }}</p>

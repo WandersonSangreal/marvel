@@ -1,14 +1,26 @@
 <ng-container *ngIf="details$ | async as detail">
-  <div class="container" *ngFor="let item of detail.results">
+  <div class="container my-4" *ngFor="let item of detail.results">
     <div class="row">
       <div class="col-2">
-        <img [src]="item.thumbnail.path.replace('http', 'https') + '/standard_fantastic.jpg'" [alt]="item.name" class="img-thumbnail">
+        <img [src]="item.thumbnail.path.replace('http', 'https') + '/standard_fantastic.jpg'" [alt]="item.name"
+             class="img-thumbnail">
       </div>
       <div class="col">
         <h2>{{ item.name }}</h2>
         <p>{{ item.description || 'Sem descrição disponível' }}</p>
+        <button class="btn btn-outline-light" [routerLink]="['/']">Voltar</button>
       </div>
     </div>
+
+    <br>
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <h2>Quadrinhos</h2>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-2 my-4" *ngFor="let item of item.comics.items">
         <img src="/assets/comics/comic.jpg" [alt]="item.name" class="img-thumbnail">
