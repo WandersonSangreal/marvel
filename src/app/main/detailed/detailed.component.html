@@ -2,7 +2,7 @@
   <div class="container" *ngFor="let item of detail.results">
     <div class="row">
       <div class="col-2">
-        <img [src]="item.thumbnail.path + '/standard_fantastic.jpg'" [alt]="item.name" class="img-thumbnail">
+        <img [src]="item.thumbnail.path.replace('http', 'https') + '/standard_fantastic.jpg'" [alt]="item.name" class="img-thumbnail">
       </div>
       <div class="col">
         <h2>{{ item.name }}</h2>
