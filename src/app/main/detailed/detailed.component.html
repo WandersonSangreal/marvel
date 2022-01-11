@@ -21,11 +21,21 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-2 my-4" *ngFor="let item of item.comics.items">
-        <img src="/assets/comics/comic.jpg" [alt]="item.name" class="img-thumbnail">
-        <p>{{ item.name }}</p>
+    <ng-container *ngIf="comics$ | async as comics; else elseBlock">
+      <div class="row">
+        <div class="col-2 my-4" *ngFor="let item of comics.results">
+          <img [src]="item.thumbnail.path.replace('http', 'https') + '/portrait_fantastic.jpg'" [alt]="item.title"
+               class="img-thumbnail">
+          <p>{{ item.title }}</p>
+        </div>
+        <div class="col text-center  my-lg-4" *ngIf="comics.results.length === 0">
+          Nenhum resultado encontrado.
+        </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #elseBlock>
+      <div class="text-center">Carregando...</div>
+    </ng-template>
+
   </div>
 </ng-container>
